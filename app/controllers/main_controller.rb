@@ -6,13 +6,21 @@ class MainController < ApplicationController
 
   def count_entrance
   	date = Time.now
-  	counter = Counter.create(counter_date: date.strftime("%d/%m/%Y"), counter_time: date.strftime("%H,%M,%S"), sensor_id: 1, store_id: 1)
+  	counter = Counter.create(counter_date: date.strftime("%d/%m/%Y"), counter_time: date.strftime("%H,%M,%S"), sensor_id: params[:id], store_id: 1)
   	render json: counter
   end
 
   def count_registers
   	counters = Counter.all.reverse_order
   	render json: counters
+  end
+
+  def connection_check
+    sensor = Sensor.find(params[:id])
+    sensor.connection_status = true
+    sensor.connection_request_counter = sensor.connection_request_counter + 1
+    sensor.save
+    render json: sensor
   end
 
   def reports

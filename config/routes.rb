@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :sensors
   resources :stores
 
-  get '/count_entrance' => 'main#count_entrance'
+  get '/count_entrance/:id' => 'main#count_entrance'
   get '/count_registers' => 'main#count_registers'
+  get '/connection_check/:id' => 'main#connection_check'
   get '/reports' => 'main#reports'
 
   # Reports URIs

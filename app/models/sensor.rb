@@ -9,4 +9,16 @@ class Sensor < ApplicationRecord
   		return "Inactivo"
   	end
   end
+
+  def self.check_connection
+  	Sensor.all.each do |sensor|
+      if sensor.connection_request_counter == 0
+        sensor.connection_status = false
+      end
+      sensor.connection_request_counter = 0
+  		sensor.save
+  	end
+  end
+
+
 end

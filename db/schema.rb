@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180303023759) do
+ActiveRecord::Schema.define(version: 20180309165854) do
 
   create_table "counters", force: :cascade do |t|
     t.string "counter_date"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20180303023759) do
     t.integer "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "connection_status", default: false
+    t.integer "connection_request_counter", default: 0
     t.index ["store_id"], name: "index_sensors_on_store_id"
   end
 
