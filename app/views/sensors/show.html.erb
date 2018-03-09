@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serial number:</strong>
+  <%= @sensor.serial_number %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @sensor.brand %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sensor.status %>
+</p>
+
+<p>
+  <strong>Installation date:</strong>
+  <%= @sensor.installation_date %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @sensor.store %>
+</p>
+
+<%= link_to 'Edit', edit_sensor_path(@sensor) %> |
+<%= link_to 'Back', sensors_path %>

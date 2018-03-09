@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card">
+		  <h5 class="card-header">Número de registros (Fecha y Hora)</h5>
+		  <div class="card-body">
+		    <p class="card-text">Seleccione la fecha y hora (si no selecciona una hora, se generará un reporte para el día completo) para ver todos los ingresos registrados.</p>
+		    <%= form_tag("/daily_reports", method: "get") do %>
+		    	<div class="form-group">
+		    		<%= label_tag "Fecha:" %>
+		    		<%= date_select('report', 'date') %>	
+		    	</div>
+		    	<div class="form-group">
+		    		<%= label_tag "Hora:" %>
+		    		<%= select_tag "hour", "<option>-</option><option>00:00</option><option>01:00</option><option>02:00</option><option>03:00</option><option>04:00</option><option>05:00</option><option>06:00</option><option>07:00</option><option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option><option>22:00</option><option>23:00</option>".html_safe %>	
+		    	</div>
+		    	<div class="form-group">
+		    		<%= submit_tag("Generar reporte", class: "btn btn-primary btn-block") %>
+		    	</div>
+		    <% end %>
+		  </div>
+		</div>	
+	</div>
+	<div class="col-lg-6">
+		<div class="card">
+		  <h5 class="card-header">Número de registros (Rango de fechas)</h5>
+		  <div class="card-body">
+		    <p class="card-text">Seleccione dos fechas para ver la información correspondiente al periódo</p><br>
+		    <%= form_tag("/date_reports", method: "get") do %>
+		    	<div class="form-group">
+		    		<%= label_tag "Fecha inicial:" %>
+		    		<%= date_select('report1', 'initial_date') %>	
+		    	</div>
+		    	<div class="form-group">
+		    		<%= label_tag "Fecha final:" %>
+		    		<%= date_select('report2', 'final_date') %>	
+		    	</div>
+		    	<div class="form-group">
+		    		<%= submit_tag("Generar reporte", class: "btn btn-primary btn-block") %>
+		    	</div>
+		    <% end %>
+		  </div>
+		</div>	
+	</div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-12">
+    <p id="notice"><%= notice %></p>
+  
+    <h1 class="main-title">Tiendas</h1>
+    
+    <%= link_to 'Agregar tienda', new_store_path %>
+    
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Direccion</th>
+            <th>Fecha de creacion</th>
+            <th colspan="2">Operaciones</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @stores.each do |store| %>
+            <tr>
+              <td><%= store.name %></td>
+              <td><%= store.phone %></td>
+              <td><%= store.address %></td>
+              <td><%= store.created_at %></td>
+              <td><%= link_to 'Ver', store %></td>
+              <td><%= link_to 'Editar', edit_store_path(store) %></td>
+              <!--<td><%= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>  
+
+  </div>
+</div>  

@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card">
+		  <h5 class="card-header">Reporte del día</h5>
+		  <div class="card-body">
+		    <h5 class="card-title">Estos son los números de entradas registradas en los últimos 7 días</h5>
+		    
+		    <!--Div that will hold the pie chart-->
+		    <center>
+		    	<div id="chart_div"></div>
+		    </center>
+		  </div>
+		</div>	
+	</div>
+	<div class="col-lg-6">
+		<div class="card">
+		  <h5 class="card-header">Reporte por hora</h5>
+		  <div class="card-body">
+		    <h5 class="card-title">El día 28/02/2018 se registraron los siguientes ingresospor hora</h5>
+		    <center>
+		    	<div id="hour_chart_div"></div>
+		    </center>
+		  </div>
+		</div>	
+	</div>
+</div>
+
+<hr class="divider">
+
+<div class="row">
+	<div class="col-lg-4">
+		<div class="card">
+		  <h5 class="card-header">Sensores activos</h5>
+		  <div class="card-body">
+		    <p class="card-text">Actualmente la tienda cuenta con los siguientes sensores activos:</p>
+		    <ul>
+		    	<% @active_sensors.each do |sensor| %>
+		    		<li><%= sensor.serial_number %></li>
+		    	<% end %>
+		    </ul>
+		    <center>
+		    	<%= link_to "Ver todos los sensores", sensors_url, class: "btn btn-primary" %>
+		    </center>
+		  </div>
+		</div>	
+	</div>
+	<div class="col-lg-4">
+		<div class="card">
+		  <h5 class="card-header">Registros</h5>
+		  <div class="card-body">
+		    <h5 class="card-title">Se registraron <%= @number_of_records %> entradas hasta hoy</h5>
+		    <p class="card-text">Para ver más información, accede a la sección de reportes</p>
+		    <center>
+		    	<%= link_to "Ir a reportes", '/reports', class: "btn btn-primary" %>
+		    </center>
+		  </div>
+		</div>	
+	</div>
+	<div class="col-lg-4">
+		<div class="card">
+		  <h5 class="card-header">¿Tienes problemas?</h5>
+		  <div class="card-body">
+		    <h5 class="card-title">Contactos de asistencia</h5>
+		    <p class="card-text">Si tienes alguna duda o los equipos no funcionan de manera correcta, puedes contactarnos a:</p>
+		    <ul>
+		    	<li>Teléfono: 77498233</li>
+		    </ul>
+		  </div>
+		</div>	
+	</div>
+</div>

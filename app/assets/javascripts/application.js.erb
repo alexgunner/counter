@@ -1,0 +1,83 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
+// vendor/assets/javascripts directory can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file. JavaScript code in this file should be added after the last require_* statement.
+//
+// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require rails-ujs
+//= require turbolinks
+//= require_tree .
+
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+google.charts.setOnLoadCallback(hourChart);
+
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawChart() {
+
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Topping');
+  data.addColumn('number', 'Entradas');
+  data.addRows([
+    <% today = Time.now %>
+    ['<%= (today-1.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-1.day %>],
+    ['<%= (today-2.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-2.day %>],
+    ['<%= (today-3.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-3.day %>],
+    ['<%= (today-4.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-4.day %>],
+    ['<%= (today-5.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-5.day %>],
+    ['<%= (today-6.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-6.day %>],
+    ['<%= (today-7.day).strftime("%d/%m/%Y") %>', <%= Counter.number_of_records_on today-7.day %>],
+  ]);
+
+  // Set chart options
+  var options = {
+                 'width':500,
+                 
+                 'height':300};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+
+function hourChart() {
+
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Topping');
+  data.addColumn('number', 'Entradas');
+  data.addRows([
+    <% date = Time.new(2018,2,28) %>
+    <% (0..23).each do |h| %>
+      <% number_of_records = Counter.number_of_records date, h.to_s.rjust(2, "0") %>
+      <% if number_of_records != 0 %>
+        ['<%= h.to_s.rjust(2, "0") %>:00', <%= number_of_records %>],
+      <% end %>
+    <% end %>
+  ]);
+
+  // Set chart options
+  var options = {
+                 'width':500,
+                 
+                 'height':300};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('hour_chart_div'));
+  chart.draw(data, options);
+}

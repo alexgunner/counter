@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  counter_date: 2018-03-03
+  counter_time: 2018-03-03 02:37:59
+  sensor: one
+  store: one
+
+two:
+  counter_date: 2018-03-03
+  counter_time: 2018-03-03 02:37:59
+  sensor: two
+  store: two

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial_number: MyString
+  brand: MyString
+  status: 1
+  installation_date: 2018-03-03
+  store: one
+
+two:
+  serial_number: MyString
+  brand: MyString
+  status: 1
+  installation_date: 2018-03-03
+  store: two
