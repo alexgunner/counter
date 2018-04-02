@@ -1,0 +1,5 @@
+=> Booting Puma
+=> Rails 5.1.5 application starting in development 
+=> Run `rails server -h` for more startup options
+A server is already running. Check /Users/alexander/Programming/Rails/counter/tmp/pids/server.pid.
+Exiting
